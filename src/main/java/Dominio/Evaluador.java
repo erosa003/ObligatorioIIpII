@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dominio;
-
+//asd
     public class Evaluador implements java.io.Serializable {
     private String nombre;
     private String cedula;
