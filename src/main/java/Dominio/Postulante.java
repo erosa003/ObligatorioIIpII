@@ -13,13 +13,13 @@ public class Postulante {
     private String linkedin;
     private String formato;
     
-     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String linkedin, String unFormato ) {
+     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato ) {
         this.nombre = unNombre;
         this.cedula = unaCedula;
         this.telefono = unTelefono;
         this.direccion = unaDireccion;
         this.mail = unMail;
-        this.linkedin=linkedin;
+        this.linkedin=unLinkedin;
         this.formato=unFormato;        
    }
     
