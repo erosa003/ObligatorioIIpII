@@ -226,16 +226,16 @@ public class AltaPostulante extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String nombre = jTextField7.getText();
-        String cedula = jTextField1.getText();
+        int cedula = Integer.parseInt(jTextField1.getText());
         String direccion = jTextField8.getText();
-        String telefono = jTextField9.getText();
+        int telefono = Integer.parseInt(jTextField9.getText());
         String mail = jTextField10.getText();
         String linkedin = jTextField11.getText();
         String formato = buttonGroup1.getSelection().getActionCommand();
         
         boolean repetido = false;
         for(Postulante p : this.sistema.getlistaPostulante()){
-            if(p.getNombre().equalsIgnoreCase(cedula)){
+            if(p.getCedula() == cedula){
                 repetido = true;
             }
         }
