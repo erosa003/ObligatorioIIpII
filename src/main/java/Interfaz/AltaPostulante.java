@@ -4,10 +4,20 @@
  */
 package Interfaz;
 
+import Dominio.Postulante;
+import Dominio.Sistema;
+import javax.swing.JOptionPane;
+
 public class AltaPostulante extends javax.swing.JFrame {
-   
+    Sistema sistema;
+    
     public AltaPostulante() {
+        
+    }
+    
+    public AltaPostulante( Sistema sistema) {
         initComponents();
+        this.sistema=sistema;
     }
     
     @SuppressWarnings("unchecked")
@@ -74,6 +84,11 @@ public class AltaPostulante extends javax.swing.JFrame {
         jRadioButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButton2.setSelected(true);
         jRadioButton2.setText("Presencial");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -81,13 +96,29 @@ public class AltaPostulante extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton3.setText("Siguiente");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
+            }
+        });
+
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
             }
         });
 
@@ -193,7 +224,56 @@ public class AltaPostulante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-   
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String nombre = jTextField7.getText();
+        String cedula = jTextField1.getText();
+        String direccion = jTextField8.getText();
+        String telefono = jTextField9.getText();
+        String mail = jTextField10.getText();
+        String linkedin = jTextField11.getText();
+        String formato = buttonGroup1.getSelection().getActionCommand();
+        
+        boolean repetido = false;
+        for(Postulante p : this.sistema.getlistaPostulante()){
+            if(p.getNombre().equalsIgnoreCase(cedula)){
+                repetido = true;
+            }
+        }
+        if(repetido){
+            JOptionPane.showMessageDialog(null, "esa cedula ya existe", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            Postulante nuevopostulante = new Postulante(nombre,cedula,direccion,telefono,mail,linkedin,formato);
+            this.sistema.registrarPostulantes(nuevopostulante);
+            resetAllFields();
+            
+        AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema);
+        AltaPostulanteWindow2.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        MenuGeneral m = new MenuGeneral(this.sistema);
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+   private void resetAllFields() {
+        jTextField1.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        jTextField10.setText("");
+        jTextField11.setText("");
+    }
     public static void main(String args[]) {
     
         try {

@@ -4,11 +4,26 @@
  */
 package Interfaz;
 
-public class IngresoEntrevistas extends javax.swing.JFrame {
+import Dominio.Evaluador;
+import Dominio.Sistema;
+import Dominio.Tematica;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
+public class IngresoEntrevistas extends javax.swing.JFrame {
+    Sistema sistema;
+    ArrayList<Tematica> listaEvaluadores;
+    Tematica selecEvaluador;
     
     public IngresoEntrevistas() {
+       
+    }
+    
+    public IngresoEntrevistas(Sistema sistema) {
         initComponents();
+        this.sistema = sistema;
+        this.updatelistaEvaluadores();
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -138,7 +153,15 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
+ private void updatelistaEvaluadores(){
+        
+        DefaultListModel<String> listaEvaluadores = new DefaultListModel<>();
+        
+        for(Evaluador e : sistema.getlistaEvaluadores()){
+            listaEvaluadores.addElement(e.getNombre());
+        }
+       jList1.setModel(listaEvaluadores);
+   }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
