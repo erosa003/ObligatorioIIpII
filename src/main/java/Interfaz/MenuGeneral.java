@@ -176,7 +176,7 @@ public class MenuGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AltaPostulante AltaPostulanteWindow = new AltaPostulante();
+        AltaPostulante AltaPostulanteWindow = new AltaPostulante(this.sistema);
         AltaPostulanteWindow.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -191,7 +191,7 @@ public class MenuGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        IngresoEntrevistas IngresoEntrevistaWindow = new IngresoEntrevistas();
+        IngresoEntrevistas IngresoEntrevistaWindow = new IngresoEntrevistas(this.sistema);
         IngresoEntrevistaWindow.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dominio;
-//prueba de cambio
-    public class Evaluador implements java.io.Serializable {
+
+public class Evaluador implements java.io.Serializable {
     private String nombre;
     private String cedula;
     private String añodeingreso;
