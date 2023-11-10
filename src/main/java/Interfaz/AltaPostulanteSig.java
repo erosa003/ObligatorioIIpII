@@ -5,6 +5,10 @@
 package Interfaz;
 
 import Dominio.Sistema;
+import Dominio.Tematica;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultListModel;
 
 public class AltaPostulanteSig extends javax.swing.JFrame {
     Sistema sistema;
@@ -14,11 +18,12 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     }
     
     public AltaPostulanteSig(Sistema sistema) {
-        initComponents();
+         initComponents();
         this.sistema=sistema;
+        updateListaTematicas();
+       
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,7 +58,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nivel:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel());
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, 10.0d, 1.0d));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton1.setText("Agregar");
@@ -70,6 +75,11 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton4.setText("Eliminar");
@@ -150,16 +160,32 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    String tema = (String) jComboBox1.getSelectedItem();
+    int nivel = jSpinner1.getComponentCount();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        AltaPostulante p = new AltaPostulante(this.sistema);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void updateListaTematicas(){
+        
+        ArrayList<Tematica> tematicas = this.sistema.getlistaTematicas();
+        String[] nombreTem = new String[tematicas.size()];
+        for(int i=0; i < tematicas.size(); i++){
+            nombreTem[i] = tematicas.get(i).getNombre();
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(nombreTem));
+        getContentPane().add(jComboBox1);
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -186,6 +212,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AltaPostulanteSig().setVisible(true);
             }

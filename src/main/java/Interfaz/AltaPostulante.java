@@ -226,28 +226,45 @@ public class AltaPostulante extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String nombre = jTextField7.getText();
-        int cedula = Integer.parseInt(jTextField1.getText());
+        String cedulaAux = jTextField1.getText();
+        int cedula;
         String direccion = jTextField8.getText();
-        int telefono = Integer.parseInt(jTextField9.getText());
+        String telefonoAux = jTextField9.getText();
+        int telefono;
         String mail = jTextField10.getText();
         String linkedin = jTextField11.getText();
         String formato = buttonGroup1.getSelection().getActionCommand();
         
+        if(nombre.length()==0 || cedulaAux.length()==0 || direccion.length()==0 || telefonoAux.length()==0 || mail.length()==0 || linkedin.length()==0){
+            JOptionPane.showMessageDialog(null, "Falta llenar algun campo de texto", "Falta campo de texto: ", JOptionPane.INFORMATION_MESSAGE); 
+            return;
+        }
+        try{
+            cedula = Integer.parseInt(cedulaAux);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "La cedula debe ser un valor numerico", "Cedula Invalida: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        try{
+            telefono = Integer.parseInt(telefonoAux);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El telefono debe ser un valor numerico", "Telefono Invalido: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         boolean repetido = false;
         for(Postulante p : this.sistema.getlistaPostulante()){
             if(p.getCedula() == cedula){
                 repetido = true;
             }
         }
-        if(repetido){
-            JOptionPane.showMessageDialog(null, "esa cedula ya existe", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
-        } else{
+        if (repetido) {
+            JOptionPane.showMessageDialog(null, "esa cedula ya existe", "Cedula Repetida: ", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             Postulante nuevopostulante = new Postulante(nombre,cedula,direccion,telefono,mail,linkedin,formato);
             this.sistema.registrarPostulantes(nuevopostulante);
-            resetAllFields();
             
-        AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema);
-        AltaPostulanteWindow2.setVisible(true);
+            AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema);
+            AltaPostulanteWindow2.setVisible(true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

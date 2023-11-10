@@ -12,12 +12,12 @@ public class MenuGeneral extends javax.swing.JFrame {
 
     Sistema sistema;
 
-    public MenuGeneral() {
+    public MenuGeneral(Sistema sistema) {
         this.sistema = sistema;
         initComponents();
     }
 
-    MenuGeneral(Sistema sistema) {
+    MenuGeneral() {
 
     }
 
