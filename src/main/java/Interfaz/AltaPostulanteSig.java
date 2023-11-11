@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import Dominio.Evaluador;
 import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
@@ -162,6 +163,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String tema = (String) jComboBox1.getSelectedItem();
     int nivel = jSpinner1.getComponentCount();
+   
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -175,7 +177,15 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+   //  private void updatelistaTemas(){
+       //  DefaultListModel<String> listaTemas = new DefaultListModel<>();
+      //  String[] arrayTemas;
+      //  String[] listaNivel;
+      //  for(int i=0; i < listaNivel.length; i++){
+        //    listaNivel.addElement(i.getNombre());
+      //  }
+    //   jList1.setModel(listaTemas);
+  // }
     private void updateListaTematicas(){
         
         ArrayList<Tematica> tematicas = this.sistema.getlistaTematicas();

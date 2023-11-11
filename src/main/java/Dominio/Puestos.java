@@ -5,18 +5,21 @@
 package Dominio;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Puestos implements java.io.Serializable {
         private String nombre;
         private String tipo;
-        private ArrayList<String> temasPuestos;
-      
+       // private ArrayList<String> temasPuestos;
+       List<Tematica> TemasRequeridos;
      
-      public Puestos (String unNombre, String unTipo ) {
+      public Puestos (String unNombre, String unTipo, List<Tematica> temasReq) {
         this.nombre = unNombre;
         this.tipo = unTipo;
-        this.temasPuestos = new ArrayList<>();
+         this.TemasRequeridos = temasReq;
+        //this.temasPuestos = new ArrayList<>();
     }
      
      public String getNombre() {
@@ -34,10 +37,15 @@ public class Puestos implements java.io.Serializable {
         this.tipo = tipo;
     }
     
-     public ArrayList<String> getTemasPuestos() {
-        return temasPuestos;
+   //  public ArrayList<String> getTemasPuestos() {
+     //   return temasPuestos;
+   // }
+     // public void setStockProductos(ArrayList<String> temasPuestos) {
+       // this.temasPuestos = temasPuestos;
+   // }
+        public List<Tematica> getTemasRequeridos() {
+        return TemasRequeridos;
     }
-      public void setStockProductos(ArrayList<String> temasPuestos) {
-        this.temasPuestos = temasPuestos;
-    }
+
+    
 }

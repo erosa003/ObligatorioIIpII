@@ -170,7 +170,7 @@ public class MenuGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroTematicaActionPerformed
 
     private void btnRegistroPuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroPuestosActionPerformed
-        RegistroPuestos RegistroPuestosWindow = new RegistroPuestos();
+        RegistroPuestos RegistroPuestosWindow = new RegistroPuestos(this.sistema);
         RegistroPuestosWindow.setVisible(true);
     }//GEN-LAST:event_btnRegistroPuestosActionPerformed
 
