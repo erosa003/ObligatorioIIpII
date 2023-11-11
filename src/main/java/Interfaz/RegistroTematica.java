@@ -116,6 +116,10 @@ public class RegistroTematica extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String nombre = jTextField1.getText();
         String desc = jTextArea1.getText();
+        if(nombre.length()==0 || desc.length()==0){
+             JOptionPane.showMessageDialog(null, "Falta llenar algun campo de texto", "Falta campo de texto: ", JOptionPane.INFORMATION_MESSAGE); 
+            return;
+        }
         boolean repetido = false;
         for(Tematica t : sistema.getlistaTematicas()){
             if(t.getNombre().equalsIgnoreCase(nombre)){
@@ -129,6 +133,7 @@ public class RegistroTematica extends javax.swing.JFrame {
             this.sistema.registrarTematica(tematicanueva);
             resetAllFields();
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
