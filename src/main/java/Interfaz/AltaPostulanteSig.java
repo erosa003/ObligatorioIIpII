@@ -172,7 +172,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.setVisible(false);
+        dispose();
         AltaPostulante p = new AltaPostulante(this.sistema);
         p.setLocationRelativeTo(null);
         p.setVisible(true);

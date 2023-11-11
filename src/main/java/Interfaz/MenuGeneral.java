@@ -13,8 +13,10 @@ public class MenuGeneral extends javax.swing.JFrame {
     Sistema sistema;
 
     public MenuGeneral(Sistema sistema) {
-        this.sistema = sistema;
+        this.setVisible(true);
         initComponents();
+        this.sistema = sistema;
+
     }
 
     MenuGeneral() {
@@ -216,6 +218,8 @@ public class MenuGeneral extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         MenuGeneral ventana = new MenuGeneral();
+        ventana.setLocationRelativeTo(null);
+        ventana.initComponents();
         ventana.setVisible(true);
     }
 
