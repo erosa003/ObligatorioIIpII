@@ -4,6 +4,8 @@
  */
 package Dominio;
 
+import java.util.List;
+
 public class Postulante {
     private String nombre;
     private int cedula;
@@ -12,8 +14,9 @@ public class Postulante {
     private String mail;
     private String linkedin;
     private String formato;
+    private List<String> experiencia;
     
-     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato ) {
+     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato,List<String> unaExperiencia ) {
         this.nombre = unNombre;
         this.cedula = unaCedula;
         this.telefono = unTelefono;
@@ -21,6 +24,7 @@ public class Postulante {
         this.mail = unMail;
         this.linkedin=unLinkedin;
         this.formato=unFormato;        
+         this.experiencia = unaExperiencia;
    }
     
     
@@ -81,6 +85,8 @@ public class Postulante {
     public String getFromato(){
         return this.formato;
     }
-    
+        public List<String> getExperiencia() {
+        return experiencia;
+    }
     
 }

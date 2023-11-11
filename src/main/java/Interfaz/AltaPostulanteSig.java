@@ -5,24 +5,40 @@
 package Interfaz;
 
 import Dominio.Evaluador;
+import Dominio.Postulante;
 import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 
 public class AltaPostulanteSig extends javax.swing.JFrame {
     Sistema sistema;
-    
+    String nombre;
+    int cedula;
+    String direccion;
+    int telefono;  
+    String mail;
+    String linkedin;
+    String formato;
+     List<String> experiencias;
+     
     public AltaPostulanteSig() {
         
     }
     
-    public AltaPostulanteSig(Sistema sistema) {
-         initComponents();
+    public AltaPostulanteSig(Sistema sistema,String nombre,int cedula,String direccion,int telefono,String mail,String linkedin,String formato) {
+        initComponents();
         this.sistema=sistema;
         updateListaTematicas();
-       
+        this.nombre=nombre;
+        this.cedula=cedula;
+        this.direccion=direccion;
+        this.telefono=telefono;
+        this.mail=mail;
+        this.linkedin=linkedin;
+        this.formato=formato;
     }
 
     @SuppressWarnings("unchecked")
@@ -73,6 +89,11 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton2.setText("Registrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton3.setText("Cancelar");
@@ -163,8 +184,12 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String tema = (String) jComboBox1.getSelectedItem();
     int nivel = jSpinner1.getComponentCount();
-   
-
+    DefaultListModel<String> exp = new DefaultListModel<String>();
+    String numSrg= Integer.toString(nivel);
+    String experiencia = tema + " (" + numSrg + ")";   
+    this.experiencias.add(experiencia);
+    exp.addElement(experiencia);
+    jList1.setModel(exp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -177,6 +202,11 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato,this.experiencias);
+        this.sistema.registrarPostulantes(nuevopostulante);   
+    }//GEN-LAST:event_jButton2ActionPerformed
    //  private void updatelistaTemas(){
        //  DefaultListModel<String> listaTemas = new DefaultListModel<>();
       //  String[] arrayTemas;

@@ -261,10 +261,10 @@ public class AltaPostulante extends javax.swing.JFrame {
         if (repetido) {
             JOptionPane.showMessageDialog(null, "Esa cedula ya existe", "Cedula Repetida: ", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato);
-            this.sistema.registrarPostulantes(nuevopostulante);
+           // Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato);
+           // this.sistema.registrarPostulantes(nuevopostulante);
 
-            AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema);
+            AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema,nombre, cedula, direccion, telefono, mail, linkedin, formato);
             AltaPostulanteWindow2.setVisible(true);
         }
         limpiar();
