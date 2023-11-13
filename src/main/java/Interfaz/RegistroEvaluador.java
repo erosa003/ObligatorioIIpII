@@ -156,19 +156,43 @@ public class RegistroEvaluador extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       String nombre = jTextField1.getText();
-      String cedula = jTextField2.getText();
+      String cedulaAux = jTextField2.getText();
+      int cedula;
       String direccion = jTextField3.getText();
-      String AñodeIngreso = jTextField4.getText();
+      String AñodeIngresoAux = jTextField4.getText();
+      int AñodeIngreso;
       boolean repetido = false;
+     // int AñodeIngresoint = Integer.parseInt(AñodeIngreso);
+       if (nombre.length() == 0 || cedulaAux.length() == 0 || direccion.length() == 0 || AñodeIngresoAux.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Falta llenar algun campo de texto", "Falta campo de texto: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        try {
+            AñodeIngreso = Integer.parseInt(AñodeIngresoAux);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El año de ingreso debe ser un valor numerico", " Año de ingreso Invalido: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         try {
+            cedula = Integer.parseInt(cedulaAux);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "La cedula debe ser un valor numerico", "Cedula Invalida: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       if (AñodeIngreso > 2023) {
+            JOptionPane.showMessageDialog(null, "El año de ingreso no es anterior al año actual", "Año de Ingreso invalido: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+      
       for(Evaluador e : this.sistema.getlistaEvaluadores()){
-            if(e.getNombre().equalsIgnoreCase(cedula)){
+            if(e.getNombre().equalsIgnoreCase(cedulaAux)){
                 repetido = true;
             }
         }
         if(repetido){
-            JOptionPane.showMessageDialog(null, "esa cedula ya existe", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "esa cedula ya existe", "cedula invaida: ", JOptionPane.INFORMATION_MESSAGE);
         } else{
-            Evaluador nuevoevaluador = new Evaluador(nombre,cedula,direccion,AñodeIngreso);
+            Evaluador nuevoevaluador = new Evaluador(nombre,cedula,AñodeIngreso,direccion);
             this.sistema.registrarEvaluadores(nuevoevaluador);
             resetAllFields();
         }

@@ -5,11 +5,11 @@
 package Dominio;
     public class Evaluador implements java.io.Serializable {
     private String nombre;
-    private String cedula;
-    private String añodeingreso;
+    private int cedula;
+    private int añodeingreso;
     private String direccion;
 
-    public Evaluador (String unNombre, String unaCedula, String unAñoDeIngreso, String unaDireccion) {
+    public Evaluador (String unNombre, int unaCedula, int unAñoDeIngreso, String unaDireccion) {
         this.nombre = unNombre;
         this.cedula = unaCedula;
         this.añodeingreso = unAñoDeIngreso;
@@ -20,11 +20,11 @@ package Dominio;
         return nombre;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public String getAñoDeIngreso() {
+    public int getAñoDeIngreso() {
         return añodeingreso;
     }
     
@@ -36,11 +36,11 @@ package Dominio;
         this.nombre = nombre;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 
-    public void setAñoDeIngreso(String añoDeIngreso) {
+    public void setAñoDeIngreso(int añoDeIngreso) {
         this.añodeingreso = añoDeIngreso;
     }
     public void setDireccion(String direccion) {
