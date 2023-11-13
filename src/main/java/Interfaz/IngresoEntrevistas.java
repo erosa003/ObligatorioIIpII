@@ -5,10 +5,13 @@
 package Interfaz;
 
 import Dominio.Evaluador;
+import Dominio.Postulante;
 import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class IngresoEntrevistas extends javax.swing.JFrame {
     Sistema sistema;
@@ -23,6 +26,7 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
         initComponents();
         this.sistema = sistema;
         this.updatelistaEvaluadores();
+        this.updatelistaPostulantes();
         
     }
     
@@ -65,6 +69,7 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Puntaje:");
 
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
         jSpinner1.setName(""); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -73,6 +78,11 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton1.setText("Agregar");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton3.setText("Cancelar");
@@ -153,6 +163,16 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String Comentarios = jTextField1.getText();
+        List<String> EvaluadorSelec = jList1.getSelectedValuesList();
+        List<String> PostulanteSelec = jList2.getSelectedValuesList();
+        int Puntaje = jSpinner1.getComponentCount();
+        if(!EvaluadorSelec.isEmpty() || PostulanteSelec.isEmpty() || Comentarios.length()==0){
+             JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
  private void updatelistaEvaluadores(){
         
         DefaultListModel<String> listaEvaluadores = new DefaultListModel<>();
@@ -162,7 +182,15 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
         }
        jList1.setModel(listaEvaluadores);
    }
-    
+     private void updatelistaPostulantes(){
+        
+        DefaultListModel<String> listaPostulantes = new DefaultListModel<>();
+        
+        for(Postulante p : sistema.getlistaPostulante()){
+            listaPostulantes.addElement(p.getNombre());
+        }
+       jList2.setModel(listaPostulantes);
+   }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
