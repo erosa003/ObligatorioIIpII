@@ -10,6 +10,7 @@ public class Sistema  implements java.io.Serializable {
     public ArrayList<Postulante> listaPostulante = new ArrayList<>();
     public ArrayList<Puestos> listaPuestos = new ArrayList<>();
     public ArrayList<Tematica> listaTematicas = new ArrayList<>();
+     public ArrayList<Entrevistas> listaEntrevistas = new ArrayList<>();
     
     
     public ArrayList<Evaluador> getlistaEvaluadores() {
@@ -28,9 +29,17 @@ public class Sistema  implements java.io.Serializable {
         return listaTematicas;
     }
     
+     public ArrayList<Entrevistas> getlistaEntrevistas(){
+        return listaEntrevistas;
+    }
    
      public void registrarTematica(Tematica unaTematica) {
         listaTematicas.add(unaTematica);
+        
+    }
+     
+     public void registrarEntrevista(Entrevistas unaEntrevista) {
+        listaEntrevistas.add(unaEntrevista);
         
     }
     
@@ -46,11 +55,18 @@ public class Sistema  implements java.io.Serializable {
     
     public void registrarEvaluadores(Evaluador unEvaluador) {
         listaEvaluadores.add(unEvaluador);
+    }
+    
+    //public void nivelMayorA5(listaTematica){
+        //contador=0;
+       // for(int i = 0 ; i< listaPostulante.size(); i++ ){
+        //   if()
+        
+      //  }
         
     }
     
-    
-    
-    
-    
-}
+  
+
+
+
