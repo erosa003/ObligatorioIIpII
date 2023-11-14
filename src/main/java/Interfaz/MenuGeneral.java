@@ -183,7 +183,7 @@ public class MenuGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAltaPosultanteActionPerformed
 
     private void btnBajaPostulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaPostulanteActionPerformed
-        BajaPostulante BajaPostulanteWindow = new BajaPostulante();
+        BajaPostulante BajaPostulanteWindow = new BajaPostulante(this.sistema);
         BajaPostulanteWindow.setVisible(true);
     }//GEN-LAST:event_btnBajaPostulanteActionPerformed
 
@@ -198,12 +198,12 @@ public class MenuGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresoEntrevistasActionPerformed
 
     private void btnConsultaPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaPuestoActionPerformed
-        ConsultaPuestos ConsultaPuestosWindow = new ConsultaPuestos();
+        ConsultaPuestos ConsultaPuestosWindow = new ConsultaPuestos(this.sistema);
         ConsultaPuestosWindow.setVisible(true);
     }//GEN-LAST:event_btnConsultaPuestoActionPerformed
 
     private void btnHistoriaPostulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaPostulanteActionPerformed
-        HistoriaPostulante HistoriaPostulanteWindow = new HistoriaPostulante();
+        HistoriaPostulante HistoriaPostulanteWindow = new HistoriaPostulante(this.sistema);
         HistoriaPostulanteWindow.setVisible(true);
     }//GEN-LAST:event_btnHistoriaPostulanteActionPerformed
 

@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//Cecilia Jourdan 306329
+//Enrique Rosa 290536
+
 package Dominio;
 
 import java.util.ArrayList;

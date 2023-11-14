@@ -4,13 +4,18 @@
  */
 package Interfaz;
 
+import Dominio.Sistema;
+
 
 public class ConsultaPuestos extends javax.swing.JFrame {
-
+    Sistema sistema;
     public ConsultaPuestos() {
-        initComponents();
+        
     }
-
+    public ConsultaPuestos( Sistema sistema) {
+        initComponents();
+        this.sistema=sistema;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
