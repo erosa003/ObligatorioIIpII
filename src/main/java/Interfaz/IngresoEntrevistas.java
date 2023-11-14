@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import Dominio.Entrevistas;
 import Dominio.Evaluador;
 import Dominio.Postulante;
 import Dominio.Sistema;
@@ -165,13 +166,18 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Comentarios = jTextField1.getText();
-        List<String> EvaluadorSelec = jList1.getSelectedValuesList();
-        List<String> PostulanteSelec = jList2.getSelectedValuesList();
-        int Puntaje = jSpinner1.getComponentCount();
-        if(!EvaluadorSelec.isEmpty() || PostulanteSelec.isEmpty() || Comentarios.length()==0){
-             JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
-        }
+     //   String Comentarios = jTextField1.getText();
+        //Evaluador EvaluadorSelec = jList1.getSelectedValue();
+        //Postulante PostulanteSelec = jList2.getSelectedValue();
+     //   int Puntaje = jSpinner1.getComponentCount();
+        //if(EvaluadorSelec.isEmpty() || PostulanteSelec.isEmpty() || Comentarios.length()==0){
+     //        JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
+       // }else{
+        //Entrevistas nuevaentrevista = new Entrevistas(EvaluadorSelec, PostulanteSelec, Puntaje, Comentarios);
+        //this.sistema.registrarEntrevistas(nuevaentrevista);  
+        
+   //     }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
  private void updatelistaEvaluadores(){
         

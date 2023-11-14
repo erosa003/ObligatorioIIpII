@@ -6,7 +6,6 @@ package Interfaz;
 
 import Dominio.Sistema;
 import Dominio.Tematica;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class RegistroTematica extends javax.swing.JFrame {
@@ -114,7 +113,7 @@ public class RegistroTematica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String nombre = jTextField1.getText();
+        String nombre = jTextField1.getText().toLowerCase();
         String desc = jTextArea1.getText();
         if(nombre.length()==0 || desc.length()==0){
              JOptionPane.showMessageDialog(null, "Falta llenar algun campo de texto", "Falta campo de texto: ", JOptionPane.INFORMATION_MESSAGE); 
