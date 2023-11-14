@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 public class AltaPostulanteSig extends javax.swing.JFrame {
@@ -192,11 +193,22 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
         jSpinner1.commitEdit();
     } catch ( java.text.ParseException e ) { }
     int nivel = ((Double) jSpinner1.getValue()).intValue();
-    String numSrg= Integer.toString(nivel);
-    String experiencia = tema + " (" + numSrg + ")";   
-    this.experiencias.add(experiencia);
-    this.exp.addElement(experiencia);
-    jList1.setModel(this.exp);
+    boolean repetido = false;
+        for(Tematica t : sistema.getlistaTematicas()){
+            if(t.getNombre().equalsIgnoreCase(tema)){
+                repetido = true;
+            }
+        }
+        if(repetido){
+            JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+        String numSrg= Integer.toString(nivel);
+        String experiencia = tema + " (" + numSrg + ")";   
+         this.experiencias.add(experiencia);
+         this.exp.addElement(experiencia);
+         jList1.setModel(this.exp);
+        }
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
