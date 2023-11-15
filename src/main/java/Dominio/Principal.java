@@ -6,7 +6,7 @@ package Dominio;
 import Interfaz.VentanaSerializacion;
 import java.awt.EventQueue;
 
-public class Principal {
+public class Principal implements java.io.Serializable {
     
       static Sistema sistema = new Sistema();
 

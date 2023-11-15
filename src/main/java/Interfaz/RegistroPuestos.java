@@ -71,6 +71,11 @@ public class RegistroPuestos extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Presencial");
@@ -159,7 +164,7 @@ public class RegistroPuestos extends javax.swing.JFrame {
             }
         
         }
-        if(nombre.length()==0 && !matchingTem.isEmpty()){
+        if(nombre.length()==0 || matchingTem.isEmpty()){
             JOptionPane.showMessageDialog(null, "Falta llenar algun campo", "Falta llenar: ", JOptionPane.INFORMATION_MESSAGE); 
             return;
         }
@@ -181,6 +186,13 @@ public class RegistroPuestos extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        MenuGeneral m = new MenuGeneral(this.sistema);
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void updateListaTematicas(){
         

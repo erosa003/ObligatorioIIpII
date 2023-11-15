@@ -62,11 +62,26 @@ public class Sistema  implements java.io.Serializable {
        // for(int i = 0 ; i< listaPostulante.size(); i++ ){
         //   if()
         
-      //  }
-        
-    }
+      //    
     
-  
-
-
-
+    public Evaluador findEvaluador(String nombreEvaluador){
+       Evaluador evaluador = new Evaluador(); 
+               
+       for(Evaluador e : this.listaEvaluadores){
+           if(nombreEvaluador.equalsIgnoreCase(e.getNombre())){
+               evaluador = e;
+           }
+       }
+       return evaluador;
+    }
+     public Postulante findPostulante(String nombrePostulante){
+       Postulante postulante = new Postulante(); 
+               
+       for(Postulante p : this.listaPostulante){
+           if(nombrePostulante.equalsIgnoreCase(p.getNombre())){
+               postulante = p;
+           }
+       }
+       return postulante;
+    }
+}

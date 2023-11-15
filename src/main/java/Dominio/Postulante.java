@@ -5,7 +5,7 @@ package Dominio;
 
 import java.util.List;
 
-public class Postulante {
+public class Postulante implements java.io.Serializable {
     private String nombre;
     private int cedula;
     private String direccion;
@@ -25,6 +25,7 @@ public class Postulante {
         this.formato=unFormato;        
          this.experiencia = unaExperiencia;
    }
+     public Postulante(){}
     
     
      public void setNombre(String unNombre) {
