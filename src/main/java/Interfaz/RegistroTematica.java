@@ -131,6 +131,7 @@ public class RegistroTematica extends javax.swing.JFrame {
             Tematica tematicanueva = new Tematica(nombre,desc);
             this.sistema.registrarTematica(tematicanueva);
             resetAllFields();
+            this.setVisible(false);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed

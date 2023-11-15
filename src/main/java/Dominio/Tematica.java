@@ -3,7 +3,7 @@
 
 package Dominio;
 
-public class Tematica {
+public class Tematica implements java.io.Serializable {
     private String nombre;
     private String descripcion;
     

@@ -8,12 +8,12 @@ import Dominio.Serializacion;
 import Dominio.Sistema;
 
 public class VentanaSerializacion extends javax.swing.JFrame {
-     Sistema sistema;
+    Sistema sistema;
 
    
     public VentanaSerializacion(Sistema unSistema) {
-         this.sistema = unSistema;
-         initComponents();
+        this.sistema = unSistema;
+        initComponents();
     }
   
     @SuppressWarnings("unchecked")
@@ -80,18 +80,17 @@ public class VentanaSerializacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
         MenuGeneral m = new MenuGeneral( this.sistema);
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.setVisible(false);
-      //  dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //precargar datos usando sistema
-       //  if (Serializacion.cargarDatos() != null) {
-       //    sistema = Serializacion.cargarDatos();
-       // }
+        if (Serializacion.cargarDatos() != null) {
+           sistema = Serializacion.cargarDatos();
+        }
         MenuGeneral m = new MenuGeneral( this.sistema);
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -99,9 +98,7 @@ public class VentanaSerializacion extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

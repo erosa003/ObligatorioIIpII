@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import Dominio.Serializacion;
 import Dominio.Sistema;
 import java.awt.EventQueue;
 import java.awt.Dimension;
@@ -20,7 +21,6 @@ public class MenuGeneral extends javax.swing.JFrame {
     }
 
     MenuGeneral() {
-
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +41,13 @@ public class MenuGeneral extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistroTematica.setBackground(new java.awt.Color(204, 204, 204));
@@ -152,6 +158,11 @@ public class MenuGeneral extends javax.swing.JFrame {
         btnFin.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btnFin.setForeground(new java.awt.Color(51, 51, 51));
         btnFin.setText("Fin");
+        btnFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Sylfaen", 3, 24)); // NOI18N
@@ -161,7 +172,7 @@ public class MenuGeneral extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+              
     private void btnRegistroTematicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroTematicaActionPerformed
         RegistroTematica registroTematicaWindow = new RegistroTematica(this.sistema);
         registroTematicaWindow.setVisible(true);
@@ -211,6 +222,15 @@ public class MenuGeneral extends javax.swing.JFrame {
         ConsultaTematica ConsultaTematicaWindow = new ConsultaTematica(this.sistema);
         ConsultaTematicaWindow.setVisible(true);
     }//GEN-LAST:event_btnConsultaTematicaActionPerformed
+
+    private void btnFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinActionPerformed
+        Serializacion.guardarDatos(sistema);
+        this.dispose();
+    }//GEN-LAST:event_btnFinActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Serializacion.guardarDatos(sistema);
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
 

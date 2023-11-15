@@ -194,8 +194,9 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     } catch ( java.text.ParseException e ) { }
     int nivel = ((Double) jSpinner1.getValue()).intValue();
     boolean repetido = false;
-        for(Tematica t : sistema.getlistaTematicas()){
-            if(t.getNombre().equalsIgnoreCase(tema)){
+        for(String e : this.experiencias){
+            String[] temaExp = e.split("\\(\\s*");
+            if(temaExp[0].trim().equalsIgnoreCase(tema)){
                 repetido = true;
             }
         }
@@ -223,8 +224,16 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      String temaSelec = jList1.getSelectedValue();
+      
+       if(temaSelec==null || temaSelec.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Tiene que seleccionar una tematica", "Seleccione tematica: ", JOptionPane.INFORMATION_MESSAGE); 
+            return;
+        }else{
         Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato,this.experiencias);
         this.sistema.registrarPostulantes(nuevopostulante);   
+        this.setVisible(false);
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

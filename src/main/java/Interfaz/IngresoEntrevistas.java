@@ -169,16 +169,19 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //String Comentarios = jTextField1.getText();
-        //Evaluador EvaluadorSelec = jList1.getSelectedValue();
-        //Postulante PostulanteSelec = jList2.getSelectedValue();
-        //int Puntaje = jSpinner1.getComponentCount();
-        //if(EvaluadorSelec.length()==0 || PostulanteSelec==0 || Comentarios.length()==0){
-          //    JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
-        //}else{
-          //  Entrevistas nuevaentrevista = new Entrevistas(EvaluadorSelec, PostulanteSelec, Puntaje, Comentarios);
-         //   this.sistema.registrarEntrevistas(nuevaentrevista);  
-       // }
+        String Comentarios = jTextField1.getText();
+        String EvaluadorSelec = jList1.getSelectedValue();
+        Evaluador e = this.sistema.findEvaluador(EvaluadorSelec);
+        String PostulanteSelec = jList2.getSelectedValue();
+        Postulante p = this.sistema.findPostulante(PostulanteSelec);
+        int Puntaje = jSpinner1.getComponentCount();
+        if(EvaluadorSelec.isEmpty() || PostulanteSelec.isEmpty() || Comentarios.length()==0){
+              JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            Entrevistas nuevaentrevista = new Entrevistas(e, p, Puntaje, Comentarios);
+            this.sistema.registrarEntrevista(nuevaentrevista);  
+            this.setVisible(false);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
  private void updatelistaEvaluadores(){

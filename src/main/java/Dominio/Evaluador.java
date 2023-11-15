@@ -14,6 +14,7 @@ package Dominio;
         this.añodeingreso = unAñoDeIngreso;
         this.direccion = unaDireccion;
     }
+    public Evaluador(){ }
 
     public String getNombre() {
         return nombre;
