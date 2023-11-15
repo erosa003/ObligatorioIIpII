@@ -6,9 +6,10 @@ package Interfaz;
 
 import Dominio.Postulante;
 import Dominio.Sistema;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class AltaPostulante extends javax.swing.JFrame {
+public class AltaPostulante extends javax.swing.JFrame{
 
     Sistema sistema;
 
@@ -294,29 +295,14 @@ public class AltaPostulante extends javax.swing.JFrame {
 
     public static void main(String args[]) {
 
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AltaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AltaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AltaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AltaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new AltaPostulante().setVisible(true);
             }
         });
+               
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -343,4 +329,5 @@ public class AltaPostulante extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
 }
