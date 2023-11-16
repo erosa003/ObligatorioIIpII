@@ -9,17 +9,21 @@ import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 
-public class RegistroPuestos extends javax.swing.JFrame {
+public class RegistroPuestos extends javax.swing.JFrame implements Observer{
     Sistema sistema;
      public RegistroPuestos() {
     }
     public RegistroPuestos(Sistema sistema) {
         initComponents();
         this.sistema=sistema;
+        sistema.addObserver(this);
+        update(null,null);
         updateListaTematicas();
     }
 
@@ -254,4 +258,11 @@ public class RegistroPuestos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.updateListaTematicas();
+        
+    } 
+
 }

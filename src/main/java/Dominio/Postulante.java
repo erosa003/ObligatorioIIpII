@@ -85,7 +85,8 @@ public class Postulante implements java.io.Serializable {
     public String getFromato(){
         return this.formato;
     }
-        public List<String> getExperiencia() {
+    
+     public List<String> getExperiencia() {
         return experiencia;
     }
     
