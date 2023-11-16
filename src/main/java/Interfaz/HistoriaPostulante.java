@@ -1,15 +1,21 @@
 
 package Interfaz;
+import Dominio.Postulante;
 import Dominio.Sistema;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.DefaultListModel;
 
-public class HistoriaPostulante extends javax.swing.JFrame {
+public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     public HistoriaPostulante() {
-       
     }
     public HistoriaPostulante(Sistema sistema) {
         initComponents();
         this.sistema=sistema;
+         sistema.addObserver(this);
+        update(null,null);
+        updateListaPostulante();
     }
 
     
@@ -264,29 +270,21 @@ public class HistoriaPostulante extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+    
+    private void updateListaPostulante(){
+        
+        DefaultListModel<String> listaPostulante = new DefaultListModel<>();
+        
+        for(Postulante p : sistema.getlistaPostulante()){
+            listaPostulante.addElement(p.getNombre()+ "("+ p.getCedula()+" )");
+            
+        }
+       
+       jList1.setModel(listaPostulante);
+   }
    
     public static void main(String args[]) {
       
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HistoriaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HistoriaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HistoriaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HistoriaPostulante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -327,4 +325,12 @@ public class HistoriaPostulante extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+
+@Override
+    public void update(Observable o, Object arg) {
+        this.updateListaPostulante();
+        
+    } 
+
 }

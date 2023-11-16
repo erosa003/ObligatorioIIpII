@@ -10,12 +10,15 @@ public class Entrevistas implements java.io.Serializable  {
     private Postulante postulante;
     private int puntaje;
     private String comentario;
+    private int indicePostulante;
 
-    public Entrevistas (Evaluador unEvaluador, Postulante unPostulante, int puntaje, String unComentario) {
+    public Entrevistas (Evaluador unEvaluador, Postulante unPostulante, int puntaje, String unComentario, int indice) {
         this.evaluador = unEvaluador;
         this.postulante = unPostulante;
         this.puntaje = puntaje;
         this.comentario = unComentario;
+        this.indicePostulante = indice;
+        
     }
 
     public Evaluador getEvaluador() {
@@ -28,6 +31,9 @@ public class Entrevistas implements java.io.Serializable  {
 
     public int getPuntaje() {
         return puntaje;
+    }
+     public int getIndicePostulante() {
+        return indicePostulante;
     }
     
      public String getComentario() {
@@ -45,6 +51,11 @@ public class Entrevistas implements java.io.Serializable  {
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
+    
+     public void setIndicePostulante(int indicePostulante) {
+        this.indicePostulante = indicePostulante;
+    }
+     
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }

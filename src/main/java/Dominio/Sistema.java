@@ -11,7 +11,7 @@ public class Sistema extends Observable implements java.io.Serializable {
     public ArrayList<Postulante> listaPostulante = new ArrayList<>();
     public ArrayList<Puestos> listaPuestos = new ArrayList<>();
     public ArrayList<Tematica> listaTematicas = new ArrayList<>();
-     public ArrayList<Entrevistas> listaEntrevistas = new ArrayList<>();
+    public ArrayList<Entrevistas> listaEntrevistas = new ArrayList<>();
     
     
     public ArrayList<Evaluador> getlistaEvaluadores() {
@@ -86,9 +86,9 @@ public class Sistema extends Observable implements java.io.Serializable {
        return postulante;
     }
      
-     public Postulante nivelMayorA5(String nombreTem){
+    // public Postulante nivelMayorA5(String nombreTem){
      
      
-     }
+    //}
      
 }
