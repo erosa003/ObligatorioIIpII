@@ -11,10 +11,12 @@ import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class IngresoEntrevistas extends javax.swing.JFrame {
+public class IngresoEntrevistas extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     ArrayList<Tematica> listaEvaluadores;
     Tematica selecEvaluador;
@@ -26,6 +28,8 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     public IngresoEntrevistas(Sistema sistema) {
         initComponents();
         this.sistema = sistema;
+        sistema.addObserver(this);
+        update(null,null);
         this.updatelistaEvaluadores();
         this.updatelistaPostulantes();
         
@@ -251,4 +255,12 @@ public class IngresoEntrevistas extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+ @Override
+    public void update(Observable o, Object arg) {
+        this.updatelistaEvaluadores();
+        this.updatelistaPostulantes();
+        
+    } 
+
 }

@@ -9,10 +9,12 @@ import Dominio.Tematica;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class ConsultaTematica extends javax.swing.JFrame {
+public class ConsultaTematica extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     ArrayList<Tematica> listaTematicas;
     Tematica selecTematica;
@@ -25,6 +27,8 @@ public class ConsultaTematica extends javax.swing.JFrame {
     public ConsultaTematica(Sistema sistema) {
         initComponents();
         this.sistema = sistema;
+        sistema.addObserver(this);
+        update(null,null);
         this.updateListaTematicas();
     }
 
@@ -216,4 +220,12 @@ public class ConsultaTematica extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
+
+
+ @Override
+    public void update(Observable o, Object arg) {
+        this.updateListaTematicas();
+        
+    } 
+
 }

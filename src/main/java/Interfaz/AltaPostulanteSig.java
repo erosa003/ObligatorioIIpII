@@ -10,12 +10,14 @@ import Dominio.Sistema;
 import Dominio.Tematica;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 
-public class AltaPostulanteSig extends javax.swing.JFrame {
+public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     String nombre;
     int cedula;
@@ -26,6 +28,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     String formato;
     List<String> experiencias = new ArrayList<String>();
     DefaultListModel<String> exp = new DefaultListModel<String>();
+    ArrayList<Tematica> tematicas;
             
     public AltaPostulanteSig() {}
     
@@ -39,6 +42,8 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
         this.linkedin=linkedin;
         this.formato=formato;
         initComponents();
+        sistema.addObserver(this);
+        update(null,null);
         updateListaTematicas();
     }
     
@@ -244,11 +249,10 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
    
     private void updateListaTematicas(){
-        
-        ArrayList<Tematica> tematicas = this.sistema.getlistaTematicas();
-        String[] nombreTem = new String[tematicas.size()];
-        for(int i=0; i < tematicas.size(); i++){
-            nombreTem[i] = tematicas.get(i).getNombre();
+        this.tematicas=this.sistema.getlistaTematicas();
+        String[] nombreTem = new String[this.tematicas.size()];
+        for(int i=0; i < this.tematicas.size(); i++){
+            nombreTem[i] = this.tematicas.get(i).getNombre();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(nombreTem));
         getContentPane().add(jComboBox1);
@@ -301,4 +305,11 @@ public class AltaPostulanteSig extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.updateListaTematicas();
+        
+    } 
+    
 }
