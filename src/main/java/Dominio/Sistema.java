@@ -12,6 +12,7 @@ public class Sistema extends Observable implements java.io.Serializable {
     public ArrayList<Puestos> listaPuestos = new ArrayList<>();
     public ArrayList<Tematica> listaTematicas = new ArrayList<>();
     public ArrayList<Entrevistas> listaEntrevistas = new ArrayList<>();
+    public ArrayList<Experiencia> listaExperiencia = new ArrayList<>();
     
     
     public ArrayList<Evaluador> getlistaEvaluadores() {
@@ -32,6 +33,15 @@ public class Sistema extends Observable implements java.io.Serializable {
     
      public ArrayList<Entrevistas> getlistaEntrevistas(){
         return listaEntrevistas;
+    }
+      public ArrayList<Experiencia> getlistaExpereincia(){
+        return listaExperiencia;
+    }
+      
+    public void registrarExperiencia(Experiencia unaExperienica) {
+        listaExperiencia.add(unaExperienica);
+        setChanged();
+        notifyObservers();
     }
    
      public void registrarTematica(Tematica unaTematica) {
@@ -86,9 +96,32 @@ public class Sistema extends Observable implements java.io.Serializable {
        return postulante;
     }
      
+     
+      public Tematica findTematica(String nombreTematica){
+       Tematica tematica = new Tematica(); 
+               
+       for(Tematica t : this.listaTematicas){
+           if(nombreTematica.equalsIgnoreCase(t.getNombre())){
+               tematica = t;
+           }
+       }
+       return tematica;
+    }
     // public Postulante nivelMayorA5(String nombreTem){
-     
-     
+      //   ArrayList<String> tematicas=new ArrayList<String>();
+         
+      //   for(Experiencia e : this.getlistaExpereincia()){
+            
+          //   if(e.getTematica().equals(nombreTem)){
+                 
+             //    if(e.getNivel() > 5){
+                     
+             //        tematicas.add(nombreTem);
+           //      }
+          //   }
+         
+        // }
+      //  return tematicas;
     //}
      
 }

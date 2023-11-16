@@ -15,9 +15,9 @@ public class Postulante implements java.io.Serializable {
     private String linkedin;
     private String formato;
     private  ArrayList<Entrevistas> entrevistas;
-    private List<String> experiencia;
+    //private List<String> experiencia;
     
-     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato,List<String> unaExperiencia ) {
+     public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato ) {
         this.nombre = unNombre;
         this.cedula = unaCedula;
         this.telefono = unTelefono;
@@ -25,7 +25,7 @@ public class Postulante implements java.io.Serializable {
         this.mail = unMail;
         this.linkedin=unLinkedin;
         this.formato=unFormato;        
-        this.experiencia = unaExperiencia;
+        //this.experiencia = unaExperiencia;
         this.entrevistas = new ArrayList<>();
    }
      
@@ -90,9 +90,9 @@ public class Postulante implements java.io.Serializable {
         return this.formato;
     }
     
-    public List<String> getExperiencia() {
-        return experiencia;
-    }
+    //public List<String> getExperiencia() {
+      //  return experiencia;
+    //}
     
     public List<Entrevistas> getEntrevistas() {
         return entrevistas;

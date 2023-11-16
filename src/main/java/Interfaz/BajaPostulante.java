@@ -1,8 +1,12 @@
 package Interfaz;
 
+import Dominio.Postulante;
 import Dominio.Sistema;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.DefaultListModel;
 
-public class BajaPostulante extends javax.swing.JFrame {
+public class BajaPostulante extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     
     public BajaPostulante() {
@@ -11,6 +15,9 @@ public class BajaPostulante extends javax.swing.JFrame {
     public BajaPostulante(Sistema sistema) {
         initComponents();
         this.sistema=sistema;
+         sistema.addObserver(this);
+        update(null,null);
+        updatelistaPostulantes();
     }
 
     
@@ -90,7 +97,18 @@ public class BajaPostulante extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void updatelistaPostulantes(){
+        
+        DefaultListModel<String> listaPostulantes = new DefaultListModel<>();
+        
+        for(Postulante p : sistema.getlistaPostulante()){
+            listaPostulantes.addElement(p.getNombre());
+        }
+       jList1.setModel(listaPostulantes);
+   }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -131,4 +149,10 @@ public class BajaPostulante extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+@Override
+    public void update(Observable o, Object arg) {
+        this.updatelistaPostulantes();
+        
+    } 
 }
