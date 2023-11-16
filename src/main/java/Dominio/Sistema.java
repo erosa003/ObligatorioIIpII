@@ -5,7 +5,7 @@ package Dominio;
 
 import java.util.ArrayList;
 
-public class Sistema  implements java.io.Serializable {
+public class Sistema implements java.io.Serializable {
     public ArrayList<Evaluador> listaEvaluadores = new ArrayList<>();
     public ArrayList<Postulante> listaPostulante = new ArrayList<>();
     public ArrayList<Puestos> listaPuestos = new ArrayList<>();
@@ -35,17 +35,14 @@ public class Sistema  implements java.io.Serializable {
    
      public void registrarTematica(Tematica unaTematica) {
         listaTematicas.add(unaTematica);
-        
     }
      
      public void registrarEntrevista(Entrevistas unaEntrevista) {
-        listaEntrevistas.add(unaEntrevista);
-        
+        listaEntrevistas.add(unaEntrevista); 
     }
     
     public void registrarPuesto(Puestos unPuesto) {
         listaPuestos.add(unPuesto);
-        
     }
     
      public void registrarPostulantes(Postulante unPostulante) {
@@ -55,14 +52,7 @@ public class Sistema  implements java.io.Serializable {
     
     public void registrarEvaluadores(Evaluador unEvaluador) {
         listaEvaluadores.add(unEvaluador);
-    }
-    
-    //public void nivelMayorA5(listaTematica){
-        //contador=0;
-       // for(int i = 0 ; i< listaPostulante.size(); i++ ){
-        //   if()
-        
-      //    
+    } 
     
     public Evaluador findEvaluador(String nombreEvaluador){
        Evaluador evaluador = new Evaluador(); 
@@ -84,4 +74,6 @@ public class Sistema  implements java.io.Serializable {
        }
        return postulante;
     }
+     
+     
 }
