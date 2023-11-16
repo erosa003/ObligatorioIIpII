@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Interfaz;
 
 import Dominio.Evaluador;
+import Dominio.Experiencia;
 import Dominio.Postulante;
 import Dominio.Sistema;
 import Dominio.Tematica;
@@ -194,20 +192,28 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String tema = (String) jComboBox1.getSelectedItem();
+    Tematica t =this.sistema.findTematica(tema);
     try {
         jSpinner1.commitEdit();
     } catch ( java.text.ParseException e ) { }
     int nivel = ((Double) jSpinner1.getValue()).intValue();
     boolean repetido = false;
-        for(String e : this.experiencias){
-            String[] temaExp = e.split("\\(\\s*");
-            if(temaExp[0].trim().equalsIgnoreCase(tema)){
+    for(Experiencia exp : sistema.getlistaExpereincia()){
+            if(exp.getTematica().getNombre().equalsIgnoreCase(tema)){
                 repetido = true;
             }
         }
+       // for(String e : this.experiencias){
+           // String[] temaExp = e.split("\\(\\s*");
+          //  if(temaExp[0].trim().equalsIgnoreCase(tema)){
+           //     repetido = true;
+         //   }
+       // }
         if(repetido){
             JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
         } else{
+        Experiencia nuevaexperiencia = new Experiencia(t, nivel);
+        this.sistema.registrarExperiencia(nuevaexperiencia);   
         String numSrg= Integer.toString(nivel);
         String experiencia = tema + " (" + numSrg + ")";   
          this.experiencias.add(experiencia);
@@ -235,15 +241,16 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
             JOptionPane.showMessageDialog(null, "Tiene que seleccionar una tematica", "Seleccione tematica: ", JOptionPane.INFORMATION_MESSAGE); 
             return;
         }else{
-        Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato,this.experiencias);
+        Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato);
         this.sistema.registrarPostulantes(nuevopostulante);   
         this.setVisible(false);
        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-   
-    this.experiencias.remove(jList1.getSelectedIndex());
+   sistema.getlistaExpereincia().remove(jList1.getSelectedIndex());
+    //this.experiencias.remove(jList1.getSelectedIndex());
     this.exp.removeElement(jList1.getSelectedValue());
     jList1.setModel(this.exp);   
     }//GEN-LAST:event_jButton4ActionPerformed

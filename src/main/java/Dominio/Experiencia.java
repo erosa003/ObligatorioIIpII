@@ -1,3 +1,5 @@
+//Cecilia Jourdan 306329
+//Enrique Rosa 290536
 
 package Dominio;
 
@@ -19,11 +21,11 @@ public class Experiencia implements java.io.Serializable{
      public int getNivel() {
         return nivel;
     }
-       public void setTematica(int nivel) {
+       public void setNivel(int nivel) {
         this.nivel = nivel;
     }
      
-   // public void setComentario(String comentario) {
-     //   this.comentario = comentario;
-    //}
+     public void setTematica(Tematica tematica) {
+        this.tematica = tematica;
+    }
 }

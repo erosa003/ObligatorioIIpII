@@ -2,6 +2,7 @@
 package Interfaz;
 import Dominio.Postulante;
 import Dominio.Sistema;
+import java.util.Collections;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
@@ -276,8 +277,8 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
         DefaultListModel<String> listaPostulante = new DefaultListModel<>();
         
         for(Postulante p : sistema.getlistaPostulante()){
-            listaPostulante.addElement(p.getNombre()+ "("+ p.getCedula()+" )");
-            
+            listaPostulante.addElement(p.getNombre()+ " ("+ p.getCedula()+" )");
+           // Collections.sort(getlistaPostulante, (p1, p2) -> p1.getCedula().compareToIgnoreCase(p2.getCedula()));
         }
        
        jList1.setModel(listaPostulante);

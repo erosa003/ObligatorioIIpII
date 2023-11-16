@@ -11,6 +11,7 @@ public class Tematica implements java.io.Serializable {
         this.nombre = unNombre;
         this.descripcion = unaDescripcion;
    }
+     public Tematica(){}
      
     public void setNombre(String unNombre) {
         this.nombre = unNombre;
