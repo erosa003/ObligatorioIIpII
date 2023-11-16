@@ -180,11 +180,19 @@ public class IngresoEntrevistas extends javax.swing.JFrame implements Observer{
         Postulante p = this.sistema.findPostulante(PostulanteSelec);
         int Puntaje = jSpinner1.getComponentCount();
         if(EvaluadorSelec.isEmpty() || PostulanteSelec.isEmpty() || Comentarios.length()==0){
-              JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Falta completar algun componente", "Faltan datos: ", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            Entrevistas nuevaentrevista = new Entrevistas(e, p, Puntaje, Comentarios);
+            int i;
+            if(p.getEntrevistas()==null){
+             i=0;            
+            }else{
+               i = p.getEntrevistas().size()+1;
+            } 
+            Entrevistas nuevaentrevista = new Entrevistas(e, p, Puntaje, Comentarios, i);
             this.sistema.registrarEntrevista(nuevaentrevista);  
-            this.setVisible(false);
+            p.agregarEntrevista(nuevaentrevista);
+            JOptionPane.showMessageDialog(null, "Esta es la entrevista numero "+ i , "Numero de entrevista: ", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false); 
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

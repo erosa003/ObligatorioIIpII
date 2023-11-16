@@ -3,6 +3,7 @@
 
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Postulante implements java.io.Serializable {
@@ -13,6 +14,7 @@ public class Postulante implements java.io.Serializable {
     private String mail;
     private String linkedin;
     private String formato;
+    private  ArrayList<Entrevistas> entrevistas;
     private List<String> experiencia;
     
      public Postulante (String unNombre, int unaCedula, String unaDireccion, int unTelefono,String unMail, String unLinkedin, String unFormato,List<String> unaExperiencia ) {
@@ -23,8 +25,10 @@ public class Postulante implements java.io.Serializable {
         this.mail = unMail;
         this.linkedin=unLinkedin;
         this.formato=unFormato;        
-         this.experiencia = unaExperiencia;
+        this.experiencia = unaExperiencia;
+        this.entrevistas = new ArrayList<>();
    }
+     
      public Postulante(){}
     
     
@@ -86,8 +90,16 @@ public class Postulante implements java.io.Serializable {
         return this.formato;
     }
     
-     public List<String> getExperiencia() {
+    public List<String> getExperiencia() {
         return experiencia;
     }
     
+    public List<Entrevistas> getEntrevistas() {
+        return entrevistas;
+    }
+     
+    public void agregarEntrevista(Entrevistas entrevista){
+        this.entrevistas.add(entrevista);  
+        
+    }
 }
