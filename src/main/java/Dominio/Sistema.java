@@ -52,14 +52,7 @@ public class Sistema implements java.io.Serializable {
     
     public void registrarEvaluadores(Evaluador unEvaluador) {
         listaEvaluadores.add(unEvaluador);
-    }
-    
-    //public void nivelMayorA5(listaTematica){
-        //contador=0;
-       // for(int i = 0 ; i< listaPostulante.size(); i++ ){
-        //   if()
-        
-      //    
+    } 
     
     public Evaluador findEvaluador(String nombreEvaluador){
        Evaluador evaluador = new Evaluador(); 
@@ -81,4 +74,6 @@ public class Sistema implements java.io.Serializable {
        }
        return postulante;
     }
+     
+     
 }
