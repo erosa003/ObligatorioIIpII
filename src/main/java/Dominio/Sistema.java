@@ -109,7 +109,6 @@ public class Sistema extends Observable implements java.io.Serializable {
     }
     
      public int nivelMayorA5(String nombreTem){
-        ArrayList<String> tematicas=new ArrayList<String>();
         int contador = 0;
         for(Postulante p: this.getlistaPostulante()){
          for(Experiencia e : this.getlistaExpereincia()){
@@ -118,12 +117,29 @@ public class Sistema extends Observable implements java.io.Serializable {
                  
                 if(e.getNivel() > 5){
                      contador++;
-                     tematicas.add(nombreTem);
                  }
              }
          
          }
         
+        }
+        return contador;
+     }
+     
+     
+     public int cantPuestos(String nombreTem){
+        int contador = 0;
+        for(Puestos p : this.getListaPuestos()){
+            
+         for(Experiencia e : this.getlistaExpereincia()){
+            Tematica t = this.findTematica(nombreTem);
+            if(e.getTematica().getNombre().equals(nombreTem)){
+                
+                if(p.getTemasRequeridos().contains(t)){
+                     contador++;
+                 }
+             }
+         }
         }
         return contador;
      }
