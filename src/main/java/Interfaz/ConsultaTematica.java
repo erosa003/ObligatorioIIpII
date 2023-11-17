@@ -165,7 +165,9 @@ public class ConsultaTematica extends javax.swing.JFrame implements Observer{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String temaSelec = jList1.getSelectedValue();
-      // jTextPane1.
+       int mayor5 = this.sistema.nivelMayorA5(temaSelec);
+       String stgMayor5 = Integer.toString(mayor5);
+       //jTextPane1.add(stgMayor5);
        if(temaSelec.isEmpty()){
             JOptionPane.showMessageDialog(null, "Tiene que seleccionar una tematica", "Seleccione tematica: ", JOptionPane.INFORMATION_MESSAGE); 
             return;

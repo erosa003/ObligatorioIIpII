@@ -1,14 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
 package Interfaz;
 
 import Dominio.*;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.DefaultListModel;
 
-public class ConsultaPuestos extends javax.swing.JFrame {
+public class ConsultaPuestos extends javax.swing.JFrame implements Observer {
 
     Sistema sistema;
     ArrayList<Puestos> listaPuestos;
@@ -21,6 +21,8 @@ public class ConsultaPuestos extends javax.swing.JFrame {
     public ConsultaPuestos(Sistema sistema) {
         initComponents();
         this.sistema = sistema;
+        sistema.addObserver(this);
+        update(null, null);
         updateListaPuestosyPostulantes();
     }
 
@@ -213,4 +215,12 @@ public class ConsultaPuestos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
+
+      @Override
+    public void update(Observable o, Object arg) {
+        this.updateListaPuestosyPostulantes();
+
+    }
+
+
 }

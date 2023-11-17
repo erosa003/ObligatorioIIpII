@@ -156,6 +156,7 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new BajaPostulante().setVisible(true);
             }
