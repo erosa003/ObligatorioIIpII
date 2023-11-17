@@ -1,4 +1,3 @@
-
 package Interfaz;
 
 import Dominio.Evaluador;
@@ -14,37 +13,38 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+public class AltaPostulanteSig extends javax.swing.JFrame implements Observer {
 
-public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
     Sistema sistema;
     String nombre;
     int cedula;
     String direccion;
-    int telefono;  
+    int telefono;
     String mail;
     String linkedin;
     String formato;
     List<String> experiencias = new ArrayList<String>();
     DefaultListModel<String> exp = new DefaultListModel<String>();
     ArrayList<Tematica> tematicas;
-            
-    public AltaPostulanteSig() {}
-    
-    public AltaPostulanteSig(Sistema sistema,String nombre,int cedula,String direccion,int telefono,String mail,String linkedin,String formato) {
-        this.sistema=sistema;
-        this.nombre=nombre;
-        this.cedula=cedula;
-        this.direccion=direccion;
-        this.telefono=telefono;
-        this.mail=mail;
-        this.linkedin=linkedin;
-        this.formato=formato;
+
+    public AltaPostulanteSig() {
+    }
+
+    public AltaPostulanteSig(Sistema sistema, String nombre, int cedula, String direccion, int telefono, String mail, String linkedin, String formato) {
+        this.sistema = sistema;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.linkedin = linkedin;
+        this.formato = formato;
         initComponents();
         sistema.addObserver(this);
-        update(null,null);
+        update(null, null);
         updateListaTematicas();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -191,40 +191,41 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String tema = (String) jComboBox1.getSelectedItem();
-    Tematica t =this.sistema.findTematica(tema);
-    try {
-        jSpinner1.commitEdit();
-    } catch ( java.text.ParseException e ) { }
-    int nivel = ((Double) jSpinner1.getValue()).intValue();
-    boolean repetido = false;
-    for(Experiencia exp : sistema.getlistaExpereincia()){
-            if(exp.getTematica().getNombre().equalsIgnoreCase(tema)){
+        String tema = (String) jComboBox1.getSelectedItem();
+        Tematica t = this.sistema.findTematica(tema);
+        try {
+            jSpinner1.commitEdit();
+        } catch (java.text.ParseException e) {
+        }
+        int nivel = ((Double) jSpinner1.getValue()).intValue();
+        boolean repetido = false;
+        for (Experiencia exp : sistema.getlistaExpereincia()) {
+            if (exp.getTematica().getNombre().equalsIgnoreCase(tema)) {
                 repetido = true;
             }
         }
-       // for(String e : this.experiencias){
-           // String[] temaExp = e.split("\\(\\s*");
-          //  if(temaExp[0].trim().equalsIgnoreCase(tema)){
-           //     repetido = true;
-         //   }
-       // }
-        if(repetido){
+        // for(String e : this.experiencias){
+        // String[] temaExp = e.split("\\(\\s*");
+        //  if(temaExp[0].trim().equalsIgnoreCase(tema)){
+        //     repetido = true;
+        //   }
+        // }
+        if (repetido) {
             JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
-        } else{
-        Experiencia nuevaexperiencia = new Experiencia(t, nivel);
-        this.sistema.registrarExperiencia(nuevaexperiencia);   
-        String numSrg= Integer.toString(nivel);
-        String experiencia = tema + " (" + numSrg + ")";   
-         this.experiencias.add(experiencia);
-         this.exp.addElement(experiencia);
-         jList1.setModel(this.exp);
+        } else {
+            Experiencia nuevaexperiencia = new Experiencia(t, nivel);
+            this.sistema.registrarExperiencia(nuevaexperiencia);
+            String numSrg = Integer.toString(nivel);
+            String experiencia = tema + " (" + numSrg + ")";
+            this.experiencias.add(experiencia);
+            this.exp.addElement(experiencia);
+            jList1.setModel(this.exp);
         }
-    
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -235,35 +236,35 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      String temaSelec = jList1.getSelectedValue();
-      
-       if(temaSelec==null || temaSelec.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Tiene que seleccionar una tematica", "Seleccione tematica: ", JOptionPane.INFORMATION_MESSAGE); 
+        String temaSelec = jList1.getSelectedValue();
+
+        if (temaSelec == null || temaSelec.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que seleccionar una tematica", "Seleccione tematica: ", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }else{
-        Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato);
-        this.sistema.registrarPostulantes(nuevopostulante);   
-        this.setVisible(false);
-       }
+        } else {
+            Postulante nuevopostulante = new Postulante(nombre, cedula, direccion, telefono, mail, linkedin, formato);
+            this.sistema.registrarPostulantes(nuevopostulante);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-   sistema.getlistaExpereincia().remove(jList1.getSelectedIndex());
-    //this.experiencias.remove(jList1.getSelectedIndex());
-    this.exp.removeElement(jList1.getSelectedValue());
-    jList1.setModel(this.exp);   
+        sistema.getlistaExpereincia().remove(jList1.getSelectedIndex());
+        this.exp.removeElement(jList1.getSelectedValue());
+        jList1.setModel(this.exp);
     }//GEN-LAST:event_jButton4ActionPerformed
-   
-    private void updateListaTematicas(){
-        this.tematicas=this.sistema.getlistaTematicas();
+
+    private void updateListaTematicas() {
+        this.tematicas = this.sistema.getlistaTematicas();
         String[] nombreTem = new String[this.tematicas.size()];
-        for(int i=0; i < this.tematicas.size(); i++){
+        for (int i = 0; i < this.tematicas.size(); i++) {
             nombreTem[i] = this.tematicas.get(i).getNombre();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(nombreTem));
         getContentPane().add(jComboBox1);
-   }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -316,7 +317,7 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         this.updateListaTematicas();
-        
-    } 
-    
+
+    }
+
 }

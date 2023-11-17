@@ -4,19 +4,26 @@
  */
 package Interfaz;
 
-import Dominio.Sistema;
-
+import Dominio.*;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 public class ConsultaPuestos extends javax.swing.JFrame {
+
     Sistema sistema;
+    ArrayList<Puestos> listaPuestos;
+    ArrayList<Postulante> listaPostulantes;
+
     public ConsultaPuestos() {
-        
+
     }
-    public ConsultaPuestos( Sistema sistema) {
+
+    public ConsultaPuestos(Sistema sistema) {
         initComponents();
-        this.sistema=sistema;
+        this.sistema = sistema;
+        updateListaPuestosyPostulantes();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -140,6 +147,20 @@ public class ConsultaPuestos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void updateListaPuestosyPostulantes() {
+
+        DefaultListModel<String> listaPuestos = new DefaultListModel<>();
+        DefaultListModel<String> listaPostulantes = new DefaultListModel<>();
+        
+        for (Puestos p : sistema.getListaPuestos()) {
+            listaPuestos.addElement(p.getNombre());
+        }
+        for (Postulante po : sistema.getlistaPostulante()) {
+            listaPostulantes.addElement(po.getNombre());
+        }
+        jList1.setModel(listaPuestos);
+        jList2.setModel(listaPostulantes);
+    }
 
     /**
      * @param args the command line arguments

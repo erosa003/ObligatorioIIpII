@@ -225,7 +225,7 @@ public class MenuGeneral extends javax.swing.JFrame {
 
     private void btnFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinActionPerformed
         Serializacion.guardarDatos(sistema);
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnFinActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

@@ -102,4 +102,5 @@ public class Postulante implements java.io.Serializable {
         this.entrevistas.add(entrevista);  
         
     }
+   
 }

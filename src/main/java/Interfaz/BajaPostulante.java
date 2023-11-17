@@ -2,25 +2,28 @@ package Interfaz;
 
 import Dominio.Postulante;
 import Dominio.Sistema;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
-public class BajaPostulante extends javax.swing.JFrame implements Observer{
+public class BajaPostulante extends javax.swing.JFrame implements Observer {
+
     Sistema sistema;
-    
+
     public BajaPostulante() {
-        
+
     }
+
     public BajaPostulante(Sistema sistema) {
         initComponents();
-        this.sistema=sistema;
-         sistema.addObserver(this);
-        update(null,null);
+        this.sistema = sistema;
+        sistema.addObserver(this);
+        update(null, null);
         updatelistaPostulantes();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,6 +55,11 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer{
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +80,7 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer{
                         .addGap(16, 16, 16)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
@@ -83,8 +91,8 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer{
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -97,18 +105,31 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    private void updatelistaPostulantes(){
-        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        int indiceSeleccionado = jList1.getSelectedIndex();
+
+        if (indiceSeleccionado != -1) {
+            List<Postulante> listaPostulantes = sistema.getlistaPostulante();
+            if (indiceSeleccionado < listaPostulantes.size()) {
+                listaPostulantes.remove(indiceSeleccionado);
+                updatelistaPostulantes();
+                JOptionPane.showMessageDialog(null, "Postulante eliminado con éxito", "Postulante eliminado", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+        }
+    }
+
+    private void updatelistaPostulantes() {
+
         DefaultListModel<String> listaPostulantes = new DefaultListModel<>();
-        
-        for(Postulante p : sistema.getlistaPostulante()){
+
+        for (Postulante p : sistema.getlistaPostulante()) {
             listaPostulantes.addElement(p.getNombre());
         }
-       jList1.setModel(listaPostulantes);
-   }
-    
-    
+        jList1.setModel(listaPostulantes);
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -150,9 +171,9 @@ public class BajaPostulante extends javax.swing.JFrame implements Observer{
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-@Override
+    @Override
     public void update(Observable o, Object arg) {
         this.updatelistaPostulantes();
-        
-    } 
+
+    }
 }
