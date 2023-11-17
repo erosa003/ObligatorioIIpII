@@ -267,6 +267,7 @@ public class AltaPostulante extends javax.swing.JFrame{
 
             AltaPostulanteSig AltaPostulanteWindow2 = new AltaPostulanteSig(this.sistema,nombre, cedula, direccion, telefono, mail, linkedin, formato);
             AltaPostulanteWindow2.setVisible(true);
+            this.setVisible(false);
         }
         limpiar();
     }//GEN-LAST:event_jButton3ActionPerformed

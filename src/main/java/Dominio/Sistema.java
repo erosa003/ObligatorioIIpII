@@ -107,21 +107,24 @@ public class Sistema extends Observable implements java.io.Serializable {
        }
        return tematica;
     }
-    // public Postulante nivelMayorA5(String nombreTem){
-      //   ArrayList<String> tematicas=new ArrayList<String>();
-         
-      //   for(Experiencia e : this.getlistaExpereincia()){
+    
+     public int nivelMayorA5(String nombreTem){
+        ArrayList<String> tematicas=new ArrayList<String>();
+        int contador = 0;
+        for(Postulante p: this.getlistaPostulante()){
+         for(Experiencia e : this.getlistaExpereincia()){
             
-          //   if(e.getTematica().equals(nombreTem)){
+            if(e.getTematica().getNombre().equals(nombreTem)){
                  
-             //    if(e.getNivel() > 5){
-                     
-             //        tematicas.add(nombreTem);
-           //      }
-          //   }
+                if(e.getNivel() > 5){
+                     contador++;
+                     tematicas.add(nombreTem);
+                 }
+             }
          
-        // }
-      //  return tematicas;
-    //}
-     
+         }
+        
+        }
+        return contador;
+     }
 }

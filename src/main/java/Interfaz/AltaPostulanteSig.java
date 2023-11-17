@@ -199,11 +199,13 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer {
         }
         int nivel = ((Double) jSpinner1.getValue()).intValue();
         boolean repetido = false;
-        for (Experiencia exp : sistema.getlistaExpereincia()) {
-            if (exp.getTematica().getNombre().equalsIgnoreCase(tema)) {
+       
+        for(Experiencia exp : sistema.getlistaExpereincia()){
+            
+            if(exp.getTematica().getNombre().equalsIgnoreCase(tema)){
                 repetido = true;
             }
-        }
+        } 
         // for(String e : this.experiencias){
         // String[] temaExp = e.split("\\(\\s*");
         //  if(temaExp[0].trim().equalsIgnoreCase(tema)){
@@ -213,7 +215,8 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer {
         if (repetido) {
             JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            Experiencia nuevaexperiencia = new Experiencia(t, nivel);
+            Postulante p = this.sistema.findPostulante(nombre);
+            Experiencia nuevaexperiencia = new Experiencia(t, nivel,p);
             this.sistema.registrarExperiencia(nuevaexperiencia);
             String numSrg = Integer.toString(nivel);
             String experiencia = tema + " (" + numSrg + ")";
