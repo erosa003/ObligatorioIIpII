@@ -199,22 +199,24 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer {
         }
         int nivel = ((Double) jSpinner1.getValue()).intValue();
         boolean repetido = false;
-       
-        for(Experiencia exp : sistema.getlistaExpereincia()){
+   
+        if(estaRegistrado( this.sistema.findPostulante(nombre),sistema.getlistaExpereincia())){
+            JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+        //for(Experiencia exp : sistema.getlistaExpereincia()){
             
-            if(exp.getTematica().getNombre().equalsIgnoreCase(tema)){
-                repetido = true;
-            }
-        } 
+          //  if(exp.getTematica().getNombre().equalsIgnoreCase(tema)){
+            //    repetido = true;
+            //}
+        //} 
         // for(String e : this.experiencias){
         // String[] temaExp = e.split("\\(\\s*");
         //  if(temaExp[0].trim().equalsIgnoreCase(tema)){
         //     repetido = true;
         //   }
         // }
-        if (repetido) {
-            JOptionPane.showMessageDialog(null, "esa tematica ya fue registrada", "Tematica ya registrada: ", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+         else {
             Postulante p = this.sistema.findPostulante(nombre);
             Experiencia nuevaexperiencia = new Experiencia(t, nivel,p);
             this.sistema.registrarExperiencia(nuevaexperiencia);
@@ -230,7 +232,15 @@ public class AltaPostulanteSig extends javax.swing.JFrame implements Observer {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+     public static boolean estaRegistrado(Postulante p, List<Experiencia> listaExperiencias) {
+        for (Experiencia experiencia : listaExperiencias) {
+            
+            if (experiencia.getPostulante().equals(p)) {
+                return true; 
+            }
+        }
+        return false; 
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         dispose();
         AltaPostulante p = new AltaPostulante(this.sistema);
