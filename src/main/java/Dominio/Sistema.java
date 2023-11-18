@@ -125,8 +125,7 @@ public class Sistema extends Observable implements java.io.Serializable {
         }
         return contador;
      }
-     
-     
+
      public int cantPuestos(String nombreTem){
         int contador = 0;
         for(Puestos p : this.getListaPuestos()){
