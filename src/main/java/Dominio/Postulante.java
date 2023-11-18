@@ -86,7 +86,7 @@ public class Postulante implements java.io.Serializable {
         this.formato = unFormato;
     }
     
-    public String getFromato(){
+    public String getFormato(){
         return this.formato;
     }
     

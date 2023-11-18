@@ -108,7 +108,7 @@ public class Sistema extends Observable implements java.io.Serializable {
        return tematica;
     }
     
-   public int nivelMayorA5(String nombreTem){
+     public int nivelMayorA5(String nombreTem){
         int contador = 0;
         for(Postulante p: this.getlistaPostulante()){
          for(Experiencia e : this.getlistaExpereincia()){
