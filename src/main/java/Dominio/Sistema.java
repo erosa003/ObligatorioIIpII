@@ -96,7 +96,6 @@ public class Sistema extends Observable implements java.io.Serializable {
        return postulante;
     }
      
-     
       public Tematica findTematica(String nombreTematica){
        Tematica tematica = new Tematica(); 
                
