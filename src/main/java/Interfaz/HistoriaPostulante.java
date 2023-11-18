@@ -1,5 +1,5 @@
 package Interfaz;
-
+//asd
 import Dominio.Postulante;
 import Dominio.Sistema;
 import java.util.ArrayList;
