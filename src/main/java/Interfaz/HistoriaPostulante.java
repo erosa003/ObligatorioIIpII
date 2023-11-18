@@ -1,32 +1,37 @@
-
 package Interfaz;
+
 import Dominio.Postulante;
 import Dominio.Sistema;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultListModel;
 
-public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
+public class HistoriaPostulante extends javax.swing.JFrame implements Observer {
+
     Sistema sistema;
+
     public HistoriaPostulante() {
     }
+
     public HistoriaPostulante(Sistema sistema) {
         initComponents();
-        this.sistema=sistema;
+        this.sistema = sistema;
         sistema.addObserver(this);
-        update(null,null);
+        update(null, null);
         updateListaPostulante();
-        jLabel13.setVisible(false);
-        jLabel14.setVisible(false);
-        jLabel15.setVisible(false);
-        jLabel16.setVisible(false);
-        jLabel17.setVisible(false);
-        jLabel18.setVisible(false);
-        jLabel19.setVisible(false);      
+        lblNombre.setVisible(false);
+        lblCedula.setVisible(false);
+        lblDireccion.setVisible(false);
+        lblTelefono.setVisible(false);
+        lblMail.setVisible(false);
+        lblLinkedin.setVisible(false);
+        lblFormato.setVisible(false);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,13 +66,13 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
         jButton3 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblCedula = new javax.swing.JLabel();
+        lblDireccion = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        lblMail = new javax.swing.JLabel();
+        lblLinkedin = new javax.swing.JLabel();
+        lblFormato = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -190,19 +195,19 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
             jTable1.getColumnModel().getColumn(2).setMaxWidth(70);
         }
 
-        jLabel13.setText("jLabel13");
+        lblNombre.setText(".");
 
-        jLabel14.setText("jLabel14");
+        lblCedula.setText(".");
 
-        jLabel15.setText("jLabel15");
+        lblDireccion.setText(".");
 
-        jLabel16.setText("jLabel16");
+        lblTelefono.setText(".");
 
-        jLabel17.setText("jLabel17");
+        lblMail.setText(".");
 
-        jLabel18.setText("jLabel18");
+        lblLinkedin.setText(".");
 
-        jLabel19.setText("jLabel19");
+        lblFormato.setText(".");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,27 +250,27 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
                                                 .addComponent(jLabel7))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(21, 21, 21)
-                                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                .addComponent(lblLinkedin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(lblDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblCedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel10))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
+                                            .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
@@ -273,7 +278,7 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addComponent(lblFormato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
@@ -285,29 +290,29 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel13))
+                    .addComponent(lblNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel14))
+                            .addComponent(lblCedula))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel15))
+                            .addComponent(lblDireccion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel16))
+                            .addComponent(lblTelefono))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel17))
+                            .addComponent(lblMail))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel18))
+                            .addComponent(lblLinkedin))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -315,7 +320,7 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
                                 .addGap(3, 3, 3))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                                .addComponent(jLabel19)
+                                .addComponent(lblFormato)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -341,36 +346,53 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String Cedula = "";
+    String Direccion = "";
+    String Telefono = "";
+    String Mail = "";
+    String Linkedin = "";
+    String Formato = "";
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-    
- 
-        String postulanteSelec = jList1.getSelectedValue();
-        jLabel13.setText(postulanteSelec);
-        jLabel13.setVisible(true);
-   
-        
-        
-        
+
+        updateListaPostulante();
     }//GEN-LAST:event_jList1MouseClicked
-    
-    private void updateListaPostulante(){
-        
+
+    private void updateListaPostulante() {
         DefaultListModel<String> listaPostulante = new DefaultListModel<>();
-        
-        for(Postulante p : sistema.getlistaPostulante()){
-            listaPostulante.addElement(p.getNombre()+ " ("+ p.getCedula()+" )");
-          // Collections.sort(getlistaPostulante, (p1, p2) -> p1.getCedula().compareToIgnoreCase(p2.getCedula()));
+
+        List<Postulante> postulantes = sistema.getlistaPostulante();
+
+        if (postulantes != null) {
+            Collections.sort(postulantes, Comparator.comparingInt(Postulante::getCedula));
+
+            for (Postulante p : postulantes) {
+                listaPostulante.addElement(p.getNombre() + " (" + Integer.toString(p.getCedula()) + ")");
+            }
         }
-       
-       jList1.setModel(listaPostulante);
-   }
-   
+
+        jList1.setModel(listaPostulante);
+        String postulanteSelec = jList1.getSelectedValue();
+        int selectedIndex = jList1.getSelectedIndex();
+        if (selectedIndex != -1) {
+            Postulante selectedPostulante = postulantes.get(selectedIndex);
+
+            lblNombre.setText(postulanteSelec);
+            lblCedula.setText(Cedula);
+            lblDireccion.setText(Direccion);
+            lblTelefono.setText(Telefono);
+            lblMail.setText(Mail);
+            lblLinkedin.setText(Linkedin);
+            lblFormato.setText(Formato);
+        }
+    }
+
     public static void main(String args[]) {
-      
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -391,13 +413,6 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -417,13 +432,19 @@ public class HistoriaPostulante extends javax.swing.JFrame implements Observer{
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblCedula;
+    private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblFormato;
+    private javax.swing.JLabel lblLinkedin;
+    private javax.swing.JLabel lblMail;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTelefono;
     // End of variables declaration//GEN-END:variables
 
-
-@Override
+    @Override
     public void update(Observable o, Object arg) {
         this.updateListaPostulante();
-        
-    } 
+
+    }
 
 }
